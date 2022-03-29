@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<Bowler>
+    <div class="d-grid gap-2 text-center">
+        <!--Needs a button to go home to all players-->
+        <a class="btn @(ViewBag.TeamName == "Home" ? "btn-primary" : "btn-outline-secondary")" asp-controller="Home" asp-action="Index" asp-route-teamID="0">View All</a>
+
+        <!--Buttons for  all the other teams-->
+        @foreach (Team t in ViewBag.AllTeams)
+        {
+            <a class="btn @(ViewBag.TeamName == t.TeamName ? "btn-primary" : "btn-outline-secondary")" asp-controller="Home" asp-action="Index" asp-route-teamID="@t.TeamId">@t.TeamName</a>
+        }
+        <br />
+        <br />
+    </div>
+    <div class="text-center">
+       <!--Dynamic header based on team name-->
+        <h1 class="display-4">All Bowlers - @ViewBag.TeamName</h1>
+        <br />
+        <a class="btn btn-secondary btn-lg" asp-controller="Home" asp-action="Add">Add a New Player</a>
+        <br />
+        <br />
+        <!--Table of all the players-->
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <td>First Name</td>
+                    <td>Middle Initial</td>
+                    <td>Last Name</td>
+                    <td>Address</td>
+                    <td>City</td>
+                    <td>State</td>
+                    <td>Zip</td>
+                    <td>Phone Number</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Bowler b in Model)
+                {
+                    <tr>
+                        <td>@b.BowlerFirstName</td>
+                        <td>@b.BowlerMiddleInit</td>
+                        <td>@b.BowlerLastName</td>
+                        <td>@b.BowlerAddress</td>
+                        <td>@b.BowlerCity</td>
+                        <td>@b.BowlerState</td>
+                        <td>@b.BowlerZip</td>
+                        <td>@b.BowlerPhoneNumber</td>
+                        <td><a asp-controller="Home" asp-action="Edit" asp-route-id="@b.BowlerID">Edit</a></td>
+                        <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@b.BowlerID">Delete</a></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>

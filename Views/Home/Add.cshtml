@@ -1,0 +1,58 @@
+﻿@{
+}
+@model Bowler
+<!--Adding a new bowler, not an ID field-->
+<h1>Add a New Bowler</h1>
+<form class="form" method="post" asp-controller="Home">
+    <div class="text-danger" asp-validation-summary="All"></div>
+    <div class="form-group">
+        <label asp-for="BowlerFirstName">First Name</label>
+        <input class="form-control" asp-for="BowlerFirstName" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BowlerMiddleInit">Middle Initial</label>
+        <input class="form-control" asp-for="BowlerMiddleInit" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BowlerLastName">Last Name</label>
+        <input class="form-control" asp-for="BowlerLastName" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BowlerAddress">Street Address</label>
+        <input class="form-control" asp-for="BowlerAddress" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BowlerCity">City</label>
+        <input class="form-control" asp-for="BowlerCity" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BowlerState">State</label>
+        <input class="form-control" asp-for="BowlerState" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BowlerZip">Zip Code</label>
+        <input class="form-control" asp-for="BowlerZip" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BowlerPhoneNumber">Phone Number</label>
+        <input class="form-control" asp-for="BowlerPhoneNumber" />
+    </div>
+    <!--Looked in the database to see what values lined up to each name so that it can be added-->
+    <div class="form-group">
+        <label asp-for="TeamID">Team Name</label>
+        <select class="form-control" asp-for="TeamID">
+            <option value=1>Marlins</option>
+            <option value=2>Sharks</option>
+            <option value=3>Terrapins</option>
+            <option value=4>Barracudas</option>
+            <option value=5>Dolphins</option>
+            <option value=6>Orcas</option>
+            <option value=7>Manatees</option>
+            <option value=8>Swordfish</option>
+            <option value=9>Huckleberrys</option>
+            <option value=10>MintJuleps</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg">Add Bowler</button>
+    <a class="btn btn-secondary btn-lg" asp-controller="Home" asp-action="Index">Cancel</a>
+</form>
